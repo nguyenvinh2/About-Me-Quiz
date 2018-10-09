@@ -11,7 +11,7 @@ namespace About_Me_Quiz
       if (Game() == true)
       {
         Console.WriteLine("Great! Let's get started");
-        int[] count = { Country(), City(), Siblings(), Military()};
+        int[] count = { Country(), City(), Siblings(), Military(), Vegas()};
         Console.ReadKey();
       }
       else
@@ -170,6 +170,34 @@ namespace About_Me_Quiz
       }
     }
 
+    static int Vegas()
+    {
+      int questionCity = 5;
+      string output;
+      while (true)
+      {
+        try
+        {
+          Console.WriteLine("How much money have I lost in Vegas? Input numbers only please.");
+          string answer = Console.ReadLine();
+          output = CheckAnswer(answer, questionCity);
+          break;
+        }
+        catch (Exception e)
+        {
+          Console.WriteLine(e.Message);
+        }
+      }
+      Console.WriteLine($"{output} and this one stung a little :(");
+      if (output == "Correct")
+      {
+        return 1;
+      }
+      else
+      {
+        return 0;
+      }
+    }
 
     static string CheckAnswer(string answer, int questionNumber)
     {
@@ -187,11 +215,15 @@ namespace About_Me_Quiz
         {
           return "Correct";
         }
-        else if ((answer.ToLower() == "0" || answer.ToLower() == "zero") && questionNumber == 3)
+        else if ((answer == "0" || answer.ToLower() == "zero") && questionNumber == 3)
         {
           return "Correct";
         }
         else if (answer.ToLower() == "navy" && questionNumber == 4)
+        {
+          return "Correct";
+        }
+        else if ((answer == "10000" || answer == "10,000" || answer == "$10,000" || answer == "$10000") && questionNumber == 4)
         {
           return "Correct";
         }
@@ -201,7 +233,6 @@ namespace About_Me_Quiz
         }
       }
     }
-
 
   }
 }
