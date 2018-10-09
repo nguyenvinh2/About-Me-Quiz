@@ -11,7 +11,7 @@ namespace About_Me_Quiz
       if (Game() == true)
       {
         Console.WriteLine("Great! Let's get started");
-        int[] count = { Country(), City(), Siblings(), Military(), Vegas()};
+        Counter(Country(), City(), Siblings(), Military(), Vegas());
         Console.ReadKey();
       }
       else
@@ -22,6 +22,28 @@ namespace About_Me_Quiz
     }
     static void Counter(int questionOne, int questionTwo, int questionThree, int questionFour, int questionFive)
     {
+      int count = 0;
+      if (questionOne == 1)
+      {
+        count++;
+      }
+      if (questionTwo == 1)
+      {
+        count++;
+      }
+      if (questionThree == 1)
+      {
+        count++;
+      }
+      if (questionFour == 1)
+      {
+        count++;
+      }
+      if (questionFive == 1)
+      {
+        count++;
+      }
+      Console.WriteLine($"You got {count} questions correct out of 5.");
     }
 
     static bool Game()
@@ -188,7 +210,7 @@ namespace About_Me_Quiz
           Console.WriteLine(e.Message);
         }
       }
-      Console.WriteLine($"{output} and this one stung a little :(");
+      Console.WriteLine(output);
       if (output == "Correct")
       {
         return 1;
@@ -223,7 +245,7 @@ namespace About_Me_Quiz
         {
           return "Correct";
         }
-        else if ((answer == "10000" || answer == "10,000" || answer == "$10,000" || answer == "$10000") && questionNumber == 4)
+        else if ((answer.ToLower() == "10000" || answer == "10,000" || answer == "$10,000" || answer == "$10000") && questionNumber == 5)
         {
           return "Correct";
         }
@@ -233,6 +255,7 @@ namespace About_Me_Quiz
         }
       }
     }
+
 
   }
 }
