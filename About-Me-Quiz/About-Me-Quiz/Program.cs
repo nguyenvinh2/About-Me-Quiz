@@ -11,7 +11,7 @@ namespace About_Me_Quiz
       if (Game() == true)
       {
         Console.WriteLine("Great! Let's get started");
-        Counter(Country(), City(), Siblings(), Military(), Vegas());
+        Counter();
         Console.ReadKey();
       }
       else
@@ -20,29 +20,16 @@ namespace About_Me_Quiz
         Console.ReadKey();
       }
     }
-    static void Counter(int questionOne, int questionTwo, int questionThree, int questionFour, int questionFive)
+    static void Counter()
     {
-      int count = 0;
-      if (questionOne == 1)
-      {
-        count++;
-      }
-      if (questionTwo == 1)
-      {
-        count++;
-      }
-      if (questionThree == 1)
-      {
-        count++;
-      }
-      if (questionFour == 1)
-      {
-        count++;
-      }
-      if (questionFive == 1)
-      {
-        count++;
-      }
+      string questionOne = "What Country was I born in?";
+      string questionTwo = "What city did I grow up in?";
+      string questionThree = "How many siblings do I have?";
+      string questionFour = "What branch of the military did I serve in?";
+      string questionFive = "How much money have I lost in Vegas?";
+
+      int count = Questions(1, questionOne) + Questions(2, questionTwo) + Questions(3, questionThree) + Questions(4, questionFour) +Questions(5, questionFive);
+
       Console.WriteLine($"You got {count} questions correct out of 5.");
     }
 
@@ -78,16 +65,15 @@ namespace About_Me_Quiz
       }
     }
 
-    static int Country()
+    static int Questions(int questionNumber, string questionContent)
     {
       string output;
-      int questionCountry = 1;
       while (true)
         try
         {
-          Console.WriteLine("What Country was I born in?");
+          Console.WriteLine(questionContent);
           string answer = Console.ReadLine();
-          output = CheckAnswer(answer, questionCountry);
+          output = CheckAnswer(answer, questionNumber);
           break;
         }
         catch (Exception e)
@@ -104,123 +90,7 @@ namespace About_Me_Quiz
         return 0;
       }
     }
-
-    static int City()
-    {
-      int questionCity = 2;
-      string output;
-      while (true)
-      {
-        try
-        {
-          Console.WriteLine("What city did I grow up in?");
-          string answer = Console.ReadLine();
-          output = CheckAnswer(answer, questionCity);
-          break;
-        }
-        catch (Exception e)
-        {
-          Console.WriteLine(e.Message);
-        }
-      }
-      Console.WriteLine(output);
-      if (output == "Correct")
-      {
-        return 1;
-      }
-      else
-      {
-        return 0;
-      }
-    }
-
-    static int Siblings()
-    {
-      int questionCity = 3;
-      string output;
-      while (true)
-      {
-        try
-        {
-          Console.WriteLine("How many siblings do I have?");
-          string answer = Console.ReadLine();
-          output = CheckAnswer(answer, questionCity);
-          break;
-        }
-        catch (Exception e)
-        {
-          Console.WriteLine(e.Message);
-        }
-      }
-      Console.WriteLine(output);
-      if (output == "Correct")
-      {
-        return 1;
-      }
-      else
-      {
-        return 0;
-      }
-    }
-
-    static int Military()
-    {
-      int questionCity = 4;
-      string output;
-      while (true)
-      {
-        try
-        {
-          Console.WriteLine("What branch of the military did I serve in?");
-          string answer = Console.ReadLine();
-          output = CheckAnswer(answer, questionCity);
-          break;
-        }
-        catch (Exception e)
-        {
-          Console.WriteLine(e.Message);
-        }
-      }
-      Console.WriteLine(output);
-      if (output == "Correct")
-      {
-        return 1;
-      }
-      else
-      {
-        return 0;
-      }
-    }
-
-    static int Vegas()
-    {
-      int questionCity = 5;
-      string output;
-      while (true)
-      {
-        try
-        {
-          Console.WriteLine("How much money have I lost in Vegas? Input numbers only please.");
-          string answer = Console.ReadLine();
-          output = CheckAnswer(answer, questionCity);
-          break;
-        }
-        catch (Exception e)
-        {
-          Console.WriteLine(e.Message);
-        }
-      }
-      Console.WriteLine(output);
-      if (output == "Correct")
-      {
-        return 1;
-      }
-      else
-      {
-        return 0;
-      }
-    }
-
+    
     static string CheckAnswer(string answer, int questionNumber)
     {
       if (answer.Length < 1)
@@ -245,7 +115,7 @@ namespace About_Me_Quiz
         {
           return "Correct";
         }
-        else if ((answer.ToLower() == "10000" || answer == "10,000" || answer == "$10,000" || answer == "$10000") && questionNumber == 5)
+        else if ((answer.ToLower() == "2000" || answer == "2,000" || answer == "$2,000" || answer == "$2000") && questionNumber == 5)
         {
           return "Correct";
         }
