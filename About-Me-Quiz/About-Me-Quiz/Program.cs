@@ -11,7 +11,8 @@ namespace About_Me_Quiz
       if (Game() == true)
       {
         Console.WriteLine("Great! Let's get started");
-        int[] count = { Country(), City() };
+        int[] count = { Country(), City(), Siblings(), Military()};
+        Console.ReadKey();
       }
       else
       {
@@ -140,6 +141,36 @@ namespace About_Me_Quiz
       }
     }
 
+    static int Military()
+    {
+      int questionCity = 4;
+      string output;
+      while (true)
+      {
+        try
+        {
+          Console.WriteLine("What branch of the military did I serve in?");
+          string answer = Console.ReadLine();
+          output = CheckAnswer(answer, questionCity);
+          break;
+        }
+        catch (Exception e)
+        {
+          Console.WriteLine(e.Message);
+        }
+      }
+      Console.WriteLine(output);
+      if (output == "Correct")
+      {
+        return 1;
+      }
+      else
+      {
+        return 0;
+      }
+    }
+
+
     static string CheckAnswer(string answer, int questionNumber)
     {
       if (answer.Length < 1)
@@ -157,6 +188,10 @@ namespace About_Me_Quiz
           return "Correct";
         }
         else if ((answer.ToLower() == "0" || answer.ToLower() == "zero") && questionNumber == 3)
+        {
+          return "Correct";
+        }
+        else if (answer.ToLower() == "navy" && questionNumber == 4)
         {
           return "Correct";
         }
